@@ -2,7 +2,7 @@ Job Vacancy Application
 =======================
 [![Build Status](https://travis-ci.org/drjm/job-vacancy.svg)](https://travis-ci.org/drjm/job-vacancy)
 
-[![Build Status](https://snap-ci.com/nicopaez/job-vacancy/branch/develop/build_image)](https://snap-ci.com/nicopaez/job-vacancy/branch/develop)
+Group members: Pablo Pire; David Galeano; Jonathan De Rojas
 
 Once you have clone this repository, follow these steps to start working:
 
