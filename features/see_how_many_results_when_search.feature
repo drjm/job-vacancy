@@ -16,4 +16,9 @@ Feature: As a candidate i want to see how many search results.
     And add search criteria "web"
     When I run the search
     Then show 1 results
-
+   
+   Scenario: I do a search that match several criteria
+    Given I visit job offers page 
+    And add search criteria "programmer"
+    When I run the search
+    Then show 3 results
