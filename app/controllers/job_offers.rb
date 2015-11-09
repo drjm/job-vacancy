@@ -17,6 +17,7 @@ JobVacancy::App.controllers :job_offers do
 
   get :latest do
     @offers = JobOffer.all_active
+    @quantity_of_results = @offers.size
     render 'job_offers/list'
   end
 
@@ -35,6 +36,7 @@ JobVacancy::App.controllers :job_offers do
 
   post :search do
     @offers = JobOffer.all(:title.like => "%#{params[:q]}%")
+    @quantity_of_results = @offers.size
     render 'job_offers/list'
   end
 

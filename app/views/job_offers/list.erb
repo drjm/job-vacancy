@@ -7,12 +7,16 @@
 	</form>
 </div>
 
+<div>
+	<strong>Search Results:</strong> <font color="green"> <%= @quantity_of_results %> </font>
+</div>
+
 <table class="table table-bordered">
 	<tr>
 		<th>Title</th>
 		<th>Location</th>
 		<th>Description</th>
-		<th>Actions</th>
+		<th>Postulations</th>
 	</tr>
 	<% @offers.each do | offer| %>
 
@@ -25,7 +29,8 @@
 		</td>
 		<td>
 			<%= offer.description %>
-		</td>		
+		</td>
+			
 		<td>
 			<%= link_to 'Apply', url_for(:job_offers, :apply, :offer_id => offer.id), :class => "btn btn-primary" %>
 		</td>		
