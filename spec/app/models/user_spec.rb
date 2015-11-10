@@ -11,6 +11,7 @@ describe User do
 		it { should respond_to( :crypted_password) }
 		it { should respond_to( :email ) }
 		it { should respond_to( :job_offers ) }
+		it { should respond_to( :specialties ) }
 
 	end
 
@@ -32,6 +33,7 @@ describe User do
 	  	expect(user.valid?).to eq false
 	  end
 
+
 	  it 'should be false when password is blank' do
 	  	user.name = 'John Doe'
 	  	user.email = 'john.doe@someplace.com'
@@ -44,6 +46,13 @@ describe User do
 	  	user.password = 'a_secure_passWord!'
 	  	expect(user.valid?).to eq true
 	  end
+
+
+	  it 'specialties should equal to java' do
+	  	user.specialties = "java"
+	  	expect(user.specialties).to eq "java"
+	  end
+
 
 	end
 
