@@ -1,13 +1,13 @@
-migration 9, :add_email_postulations do
+migration 9, :create_job_applications do
   up do
-    modify_table :job_applications do
-      add_column :email, String
+    create_table :job_applications do
+      column :id, Integer, :serial => true
+      column :user_id, DataMapper::Property::Integer
+      column :job_offer_id, DataMapper::Property::Integer
     end
   end
 
   down do
-    modify_table :job_applications do
-      drop_column :email
-    end
+    drop_table :job_applications
   end
 end
