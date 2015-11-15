@@ -1,12 +1,21 @@
 class JobApplication
 
-	attr_accessor :applicant_email
-	attr_accessor :job_offer
+	include DataMapper::Resource
 
-	def self.create_for(email, offer)
+	# property <name>, <type>
+	property :id, Serial
+	property :user_id, Integer
+	property :job_offer_id, Integer
+	property :email, String
+	belongs_to :user
+	belongs_to :job_offer
+
+	def self.create_for(email, offer, user)
 		app = JobApplication.new
-		app.applicant_email = email
+		app.email = email
 		app.job_offer = offer
+		app.user=user
+		app.save
 		app
 	end
 
