@@ -46,7 +46,10 @@ JobVacancy::App.controllers :users do
   get :profile, :map => '/profile'do    
     render 'users/user_profile'
   end
-
+  
+  get :go_the_edit, :map => '/edit' do
+    render 'user_profile_edit'
+  end
 
 
 end
