@@ -16,5 +16,19 @@ describe "UsersController" do
 	  end
 
 	 end
+
+	 describe 'get :profile' do
+	  it "should response ok" do
+	  	JobVacancy::App.any_instance.should_receive(:render).with('users/user_profile')
+	  	get '/profile'
+	    last_response.should be_ok
+	  end
+
+	 	it "should render users/user_profile" do
+	 	  JobVacancy::App.any_instance.should_receive(:render).with('users/user_profile')
+	  	  get '/profile'
+	    end
+
+	end
 	 
 end

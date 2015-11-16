@@ -1,0 +1,16 @@
+<h1>Profile editor</h1>
+<% form_for(current_user, '/users/edit') do |f| %> 
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+  <%= f.label :specialties %>
+  <%= f.text_field :specialties %>
+  <br/>
+  <%= f.submit "Edit", :class => "btn btn-primary" %>
+  <a class="btn btn-primary" href="<%= url(:users, :profile) %>"> Return </a>
+<% end %>

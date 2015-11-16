@@ -43,4 +43,10 @@ JobVacancy::App.controllers :users do
       end
   end
 
+  get :profile, :map => '/profile'do    
+    render 'users/user_profile'
+  end
+
+
+
 end
