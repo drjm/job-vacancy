@@ -33,14 +33,15 @@ describe "UsersController" do
 
 	describe 'get :go_the_edit' do
 	  it 'should response ok' do
-	  	JobVacancy::App.any_instance.should_receive(:render).with('user_profile_edit')
+	  	JobVacancy::App.any_instance.should_receive(:render).with('users/user_profile_edit')
 	  	get '/edit'
 	    last_response.should be_ok
 	  end
 
 	  it "should render users/user_profile_edit" do
-	 	  JobVacancy::App.any_instance.should_receive(:render).with('user_profile_edit')
+	 	  JobVacancy::App.any_instance.should_receive(:render).with('users/user_profile_edit')
 	  	  get '/edit'
 	  end
 	end
+
 end

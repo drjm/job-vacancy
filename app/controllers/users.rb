@@ -47,9 +47,31 @@ JobVacancy::App.controllers :users do
     render 'users/user_profile'
   end
   
-  get :go_the_edit, :map => '/edit' do
-    render 'user_profile_edit'
+  get :go_to_edit, :map => '/edit' do
+    render 'users/user_profile_edit'
   end
 
+  post :edit do
+      password = params[:user][:password]
+      password_confirmation = params[:user][:password_confirmation]
+      params[:user].reject!{|k,v| k == 'password_confirmation'}
+      if ((password != "" && password_confirmation != "") && password == password_confirmation)
+        current_user.crypted_password = ::BCrypt::Password.create(password)
+        flash.now[:success] = 'Data Updated!, password was change to ' + password
+      else
+        current_user.crypted_password = current_user.crypted_password
+        if(password == "" && password_confirmation = "")
+          flash.now[:success] = 'Data Updated!'
+        else
+          flash.now[:error] = 'Data Updated!, password unchange dont match'
+        end
+
+      end
+      current_user.name = params[:user][:name]
+      current_user.email = params[:user][:email]
+      current_user.specialties = params[:user][:specialties]
+      current_user.save
+      render 'users/user_profile'
+  end
 
 end
