@@ -31,4 +31,8 @@ Scenario: User access to their profile and edit their data, but cancel it.
   When edit their email "Carlos_93@gmail.com" and cancel the changes
   Then access to their profile seeing email with "Carlos_r@gmail.com"
 
+Scenario: User access to their profile and edit their password
+  When edit their password with "car93"
+  Then access to their profile seeing their password modified with "car93".
+
 
