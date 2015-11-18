@@ -1,4 +1,4 @@
-Given(/^three deals in the database, "(.*?)", "(.*?)", "(.*?)"$/) do |arg1, arg2, arg3|
+Given(/^two deals in the database, "(.*?)", "(.*?)"$/) do |arg1, arg2|
   @job_offer = JobOffer.new
   @job_offer.owner = User.first
   @job_offer.title = arg1
@@ -8,12 +8,6 @@ Given(/^three deals in the database, "(.*?)", "(.*?)", "(.*?)"$/) do |arg1, arg2
   @job_offer = JobOffer.new
   @job_offer.owner = User.first
   @job_offer.title = arg2
-  @job_offer.location = 'a nice job'
-  @job_offer.description = 'a nice job'
-  @job_offer.save
-  @job_offer = JobOffer.new
-  @job_offer.owner = User.first
-  @job_offer.title = arg3
   @job_offer.location = 'a nice job'
   @job_offer.description = 'a nice job'
   @job_offer.save
