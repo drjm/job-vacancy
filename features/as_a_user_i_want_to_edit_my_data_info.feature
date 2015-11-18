@@ -22,4 +22,9 @@ Scenario: User access to their profile and edit their specialization
   When edit their specialties with "PHP programmer, Web programmer"
   Then access to their profile seeing their specialization modify with "PHP programmer, Web programmer"
 
+Scenario: User access to their profile and edit their name
+  When edit their name "Carlos Rodríguez"
+  Then access to their profile seeing their name modified "Carlos Rodríguez"
+
+
 

@@ -12,11 +12,12 @@ Then(/^access to their profile seeing their specialization modify with "(.*?)"$/
 end
 
 When(/^edit their name "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+    fill_in('Name:', :with => arg1)
+  click_button('Accept')
 end
 
 Then(/^access to their profile seeing their name modified "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+  page.should have_content(arg1)
 end
 
 When(/^edit their password with "(.*?)"$/) do |arg1|
