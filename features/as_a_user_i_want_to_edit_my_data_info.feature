@@ -18,4 +18,8 @@ Scenario: User access to their profile and edit their email.
   When edit their email with "Carlos_93@gmail.com"
   Then access to their profile seeing their email modified with "Carlos_93@gmail.com"
 
+Scenario: User access to their profile and edit their specialization
+  When edit their specialties with "PHP programmer, Web programmer"
+  Then access to their profile seeing their specialization modify with "PHP programmer, Web programmer"
+
 

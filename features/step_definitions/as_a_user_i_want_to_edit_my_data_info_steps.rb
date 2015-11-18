@@ -8,7 +8,7 @@ Then(/^access to their profile seeing their email modified with "(.*?)"$/) do |a
 end
 
 Then(/^access to their profile seeing their specialization modify with "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+  page.should have_content(arg1)
 end
 
 When(/^edit their name "(.*?)"$/) do |arg1|
@@ -32,7 +32,8 @@ Then(/^access to their profile seeing password with "(.*?)"$/) do |arg1|
 end
 
 When(/^edit their specialties with "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+  fill_in('Specialties:', :with => arg1)
+  click_button('Accept')
 end
 
 When(/^edit their email "(.*?)" and cancel the changes$/) do |arg1|
