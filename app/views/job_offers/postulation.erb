@@ -1,0 +1,25 @@
+<h1>Current Postulations</h1>
+
+<table class="table table-bordered">
+	<tr>
+		<th>Title</th>
+		<th>Location</th>
+		<th>Description</th>
+	</tr>
+	<% @apps.each do | app| %>
+
+	<tr>
+		<td>
+			<%= app.job_offer.title %>
+		</td>
+		<td>
+			<%= app.job_offer.location %>
+		</td>
+		<td>
+			<%= app.job_offer.description %>
+		</td>
+	</tr>
+
+  <% end %>
+
+</table>
