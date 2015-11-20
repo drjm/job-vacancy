@@ -1,8 +1,7 @@
 Feature: As a candidate i want to see how many search results.
 
    Scenario:  load 3 deals in the database
-  	Given  two deals in the database, "Java programmer", "PHP programmer"
-  	And I visit job offers page
+    Given I visit job offers page
   	Then show 3 results
 
    Scenario: I do a search that does not match criteria

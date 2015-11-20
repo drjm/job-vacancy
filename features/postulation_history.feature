@@ -9,3 +9,9 @@ Feature: As a candidate I want to see my history postulations.
     Given a user with one postulation
     When I ask to see my postulations
     Then shows a postulation
+
+   Scenario: I postulated in three offers
+    Given a user with three postulations
+    When I ask to see my postulations
+    Then showing three postulations
+
