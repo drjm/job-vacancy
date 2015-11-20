@@ -43,6 +43,9 @@ JobVacancy::App.controllers :job_offers do
   post :search do
     @offers = JobOffer.all(:title.like => "%#{params[:q]}%")
     @quantity_of_results = @offers.size
+    if(@offers.size == 0)
+      flash.now[:error] = 'no results found'
+    end
     render 'job_offers/list'
   end
 
