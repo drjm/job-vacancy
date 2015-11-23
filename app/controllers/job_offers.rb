@@ -34,10 +34,26 @@ JobVacancy::App.controllers :job_offers do
   end
 
   get :apply, :with =>:offer_id  do
+
     @job_offer = JobOffer.get(params[:offer_id])
-    @job_application = JobApplication.new
-    # ToDo: validate the current user is the owner of the offer
-    render 'job_offers/apply'
+
+    @apps = JobApplication.all(user: current_user)
+    @flag = false
+
+    @apps.each{ |ap|
+      if(ap.job_offer_id.to_i == params[:offer_id].to_i)
+        @flag = true
+      end
+    }
+    if(@flag)
+      flash[:error] = 'you are postulated to this offer'
+      redirect '/job_offers'
+    else
+      @job_offer = JobOffer.get(params[:offer_id])
+      @job_application = JobApplication.new
+      # ToDo: validate the current user is the owner of the offer
+      render 'job_offers/apply'
+    end
   end
 
   post :search do

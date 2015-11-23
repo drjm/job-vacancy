@@ -8,7 +8,7 @@ describe "JobOffersController" do
 	  	JobVacancy::App.any_instance.should_receive(:render).with('job_offers/new')
 	  	get '/job_offers/new'
 	    last_response.should be_ok
-	  end
+	end
 
 	 end
 

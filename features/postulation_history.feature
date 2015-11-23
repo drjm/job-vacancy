@@ -15,3 +15,8 @@ Feature: As a candidate I want to see my history postulations.
     When I ask to see my postulations
     Then showing three postulations
 
+    Scenario: I postulate two times to the same offer
+     Given a user with postulations
+     When I postulate again to the same offer
+     Then displays Error Message "you are postulated to this offer"
+

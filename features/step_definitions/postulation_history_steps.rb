@@ -92,3 +92,27 @@ Then(/^showing three postulations$/) do
   page.should have_content('ruby programmer')
   page.should have_content('senior programmer')
 end
+
+
+
+Given(/^a user with postulations$/) do
+  visit "/register"
+  fill_in('Name:', :with => 'maria')
+  fill_in('Email:', :with => 'maria@test.com')
+  fill_in('Password:', :with => 1234)
+  fill_in('Password confirmation:', :with => 1234)
+  click_button('Create')
+  visit "/login"
+  fill_in('Email:', :with => 'maria@test.com')
+  fill_in('Password:', :with => 1234)
+  click_button('loginButton')
+end
+
+When(/^I postulate again to the same offer$/) do
+  visit "/job_offers/latest"
+  all('a', :text => 'Apply')[1].click
+end
+
+Then(/^displays Error Message "(.*?)"$/) do |arg1|
+  page.should have_content('you are postulated to this offer')
+end
