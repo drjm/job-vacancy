@@ -88,7 +88,7 @@ Given(/^a user with three postulations$/) do
 end
 
 Then(/^showing three postulations$/) do
- page.should have_content('web programmer')
- page.should have_content('ruby programmer')
- page.should have_content('senior programmer')
+  page.should have_content('web programmer')
+  page.should have_content('ruby programmer')
+  page.should have_content('senior programmer')
 end
