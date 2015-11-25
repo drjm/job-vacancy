@@ -2,12 +2,12 @@ Given(/^a user without postulations$/) do
   visit "/register"
   fill_in('Name:', :with => 'maria')
   fill_in('Email:', :with => 'maria@test.com')
-  fill_in('Password:', :with => 1234)
-  fill_in('Password confirmation:', :with => 1234)
+  fill_in('Password:', :with => 'mariatest1')
+  fill_in('Password confirmation:', :with => 'mariatest1')
   click_button('Create')
   visit "/login"
   fill_in('Email:', :with => 'maria@test.com')
-  fill_in('Password:', :with => 1234)
+  fill_in('Password:', :with => 'mariatest1')
   click_button('loginButton')
   page.should have_content('maria@test.com')
 end
@@ -24,12 +24,12 @@ Given(/^a user with one postulation$/) do
   visit "/register"
   fill_in('Name:', :with => 'maria')
   fill_in('Email:', :with => 'maria@test.com')
-  fill_in('Password:', :with => 1234)
-  fill_in('Password confirmation:', :with => 1234)
+  fill_in('Password:', :with => 'mariatest1')
+  fill_in('Password confirmation:', :with => 'mariatest1')
   click_button('Create')
   visit "/login"
   fill_in('Email:', :with => 'maria@test.com')
-  fill_in('Password:', :with => 1234)
+  fill_in('Password:', :with => 'mariatest1')
   click_button('loginButton')
   
   visit "/job_offers/new"
@@ -53,12 +53,12 @@ Given(/^a user with three postulations$/) do
   visit "/register"
   fill_in('Name:', :with => 'maria')
   fill_in('Email:', :with => 'maria@test.com')
-  fill_in('Password:', :with => 1234)
-  fill_in('Password confirmation:', :with => 1234)
+  fill_in('Password:', :with => 'mariatest1')
+  fill_in('Password confirmation:', :with => 'mariatest1')
   click_button('Create')
   visit "/login"
   fill_in('Email:', :with => 'maria@test.com')
-  fill_in('Password:', :with => 1234)
+  fill_in('Password:', :with => 'mariatest1')
   click_button('loginButton')
   
   visit "/job_offers/new"
@@ -99,12 +99,12 @@ Given(/^a user with postulations$/) do
   visit "/register"
   fill_in('Name:', :with => 'maria')
   fill_in('Email:', :with => 'maria@test.com')
-  fill_in('Password:', :with => 1234)
-  fill_in('Password confirmation:', :with => 1234)
+  fill_in('Password:', :with => 'mariatest1')
+  fill_in('Password confirmation:', :with => 'mariatest1')
   click_button('Create')
   visit "/login"
   fill_in('Email:', :with => 'maria@test.com')
-  fill_in('Password:', :with => 1234)
+  fill_in('Password:', :with => 'mariatest1')
   click_button('loginButton')
 end
 

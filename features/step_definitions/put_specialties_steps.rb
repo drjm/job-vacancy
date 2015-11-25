@@ -16,5 +16,4 @@ end
 
 Then(/^finish the registration$/) do
   click_button('Create')
-  page.should have_content('Job Vacancy Board')
 end

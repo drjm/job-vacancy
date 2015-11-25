@@ -27,19 +27,30 @@ JobVacancy::App.controllers :users do
   post :create do
       password_confirmation = params[:user][:password_confirmation]
       params[:user].reject!{|k,v| k == 'password_confirmation'}
-      if (params[:user][:password] == password_confirmation)
-        @user = User.new(params[:user])
-        if @user.save
-          flash[:success] = 'User created'
-          redirect '/'
+
+      @int_validation = (params[:user][:password].to_s =~ /\d+/) != nil
+      @str_validation = (params[:user][:password].to_s =~ /\D+/) != nil
+      @size_validation = params[:user][:password].to_s.size >= 8
+      
+      if(@int_validation && @str_validation && @size_validation)
+        if (params[:user][:password] == password_confirmation)
+          @user = User.new(params[:user])
+          if @user.save
+            flash[:success] = 'User created'
+            redirect '/'
+          else
+            flash.now[:error] = 'All fields are mandatory'
+            render 'users/new'
+          end
         else
-          flash.now[:error] = 'All fields are mandatory'
-          render 'users/new'
+          @user = User.new (params[:user])
+          flash.now[:error] = 'Passwords do not match'
+          render 'users/new'          
         end
       else
         @user = User.new (params[:user])
-        flash.now[:error] = 'Passwords do not match'
-        render 'users/new'          
+        flash.now[:error] = 'Invalid passwords'
+        render 'users/new'
       end
   end
 
