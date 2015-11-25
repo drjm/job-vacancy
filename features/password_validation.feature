@@ -25,3 +25,10 @@ Feature: As a user i want the password have 8 characters at minimum, and possess
     And put "fernando" on the confirmation password
     And finish the registration
     Then see the error on the registration page
+
+
+  Scenario: Put a password with 8 characters with numbers and letters
+    When put "fer96yTo" on the password
+    And put "fer96yTo" on the confirmation password
+    And finish the registration
+    Then see the registration was success
