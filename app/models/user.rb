@@ -61,7 +61,6 @@ class User
 
   def time_has_passed?(seconds)
     if(not date_blocked.nil?)
-      debugger
       time_left = Time.now - date_blocked
       if(time_left >= seconds)
         reset
