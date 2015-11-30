@@ -94,6 +94,18 @@ describe User do
 			User.authenticate(email, password).should eq 0
 		end
 
+		it 'should user to be blocked when fails a password 3 times' do
+			email = @user.email
+			password = 'wrong_password'
+			User.should_receive(:find_by_email).with(email).and_return(@user)
+			User.authenticate(email, password)
+			User.should_receive(:find_by_email).with(email).and_return(@user)
+			User.authenticate(email, password)
+			User.should_receive(:find_by_email).with(email).and_return(@user)
+			User.authenticate(email, password)
+			@user.blocked.should eq true
+		end
+
 		it 'should return nil when email do not match' do
 			email = 'wrong@email.com'
 			User.should_receive(:find_by_email).with(email).and_return(nil)
