@@ -25,7 +25,7 @@ class User
     if(user.nil?)
       return nil
     else
-      if (user.time_has_passed?(60) and user.has_password?(password))
+      if (user.time_has_passed?(84600) and user.has_password?(password))
         user.access_count = 3
         user.save
         user

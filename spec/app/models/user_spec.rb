@@ -12,6 +12,9 @@ describe User do
 		it { should respond_to( :email ) }
 		it { should respond_to( :job_offers ) }
 		it { should respond_to( :specialties ) }
+		it { should respond_to( :date_blocked ) }
+		it { should respond_to( :blocked ) }
+		it { should respond_to( :access_count ) }
 
 	end
 
