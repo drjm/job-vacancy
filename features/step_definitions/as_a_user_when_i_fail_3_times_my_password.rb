@@ -2,7 +2,7 @@ Given(/^create an a account with name "(.*?)", email "(.*?)", password\/confirma
   @user = User.new
   @user.name = arg1
   @user.email = arg2
-  @user.password = ::BCrypt::Password.create(arg3)
+  @user.password= arg3
   @user.blocked = false
   @user.date_blocked = nil
   @user.access_count = 3
@@ -24,11 +24,6 @@ end
 When(/^try to login$/) do
   click_button ('Login')
 end
-
-When(/^stay on home page$/) do
-  page.should have_content('pedro@gmail.com')
-end
-
 
 When(/^Login with "(.*?)" and password "(.*?)"$/) do |arg1, arg2|
   visit 'login'
