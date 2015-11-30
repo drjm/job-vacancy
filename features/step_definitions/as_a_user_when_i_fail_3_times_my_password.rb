@@ -24,3 +24,15 @@ end
 When(/^try to login$/) do
   click_button ('Login')
 end
+
+When(/^stay on home page$/) do
+  page.should have_content('pedro@gmail.com')
+end
+
+
+When(/^Login with "(.*?)" and password "(.*?)"$/) do |arg1, arg2|
+  visit 'login'
+  fill_in('Email:', :with => arg1)
+  fill_in('Password:', :with => arg2)
+  click_button ('Login')
+end
