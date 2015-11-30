@@ -73,7 +73,6 @@ class User
   end
 
   def reset
-    debugger
     self.blocked = false
     self.date_blocked = nil
     self.access_count = 3

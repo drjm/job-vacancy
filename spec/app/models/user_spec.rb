@@ -115,9 +115,23 @@ describe User do
 			User.authenticate(email, password)
 			User.should_receive(:find_by_email).with(email).and_return(@user)
 			User.authenticate(email, password)
-			@user.date_blocked = nil
+			@user.date_blocked = @user.date_blocked - 84600
 			User.should_receive(:find_by_email).with(email).and_return(@user)
 			User.authenticate(email, @password).should eq @user
+		end
+
+		it 'should return 2 after time of blocked worn off and puts the incorrect password' do
+			email = @user.email
+			password = 'wrong_password'
+			User.should_receive(:find_by_email).with(email).and_return(@user)
+			User.authenticate(email, password)
+			User.should_receive(:find_by_email).with(email).and_return(@user)
+			User.authenticate(email, password)
+			User.should_receive(:find_by_email).with(email).and_return(@user)
+			User.authenticate(email, password)
+			@user.date_blocked = @user.date_blocked - 84600
+			User.should_receive(:find_by_email).with(email).and_return(@user)
+			User.authenticate(email, password).should eq 2
 		end
 
 		it 'should return nil when email do not match' do
