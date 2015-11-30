@@ -63,13 +63,24 @@ describe User do
 		 	@user = User.new
 		 	@user.email = 'john.doe@someplace.com'
 		 	@user.password = @password
+		 	@user.access_count = 3
+		 	@user.blocked = false
 		end
 
-		it 'should return nil when password do not match' do
+		it 'should return 2 when password do not match' do
 			email = @user.email
 			password = 'wrong_password'
 			User.should_receive(:find_by_email).with(email).and_return(@user)
-			User.authenticate(email, password).should be_nil
+			User.authenticate(email, password).should eq 2
+		end
+
+		it 'should return 1 when fails a password 2 times' do
+			email = @user.email
+			password = 'wrong_password'
+			User.should_receive(:find_by_email).with(email).and_return(@user)
+			User.authenticate(email, password)
+			User.should_receive(:find_by_email).with(email).and_return(@user)
+			User.authenticate(email, password).should eq 1
 		end
 
 		it 'should return nil when email do not match' do
