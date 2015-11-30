@@ -83,6 +83,17 @@ describe User do
 			User.authenticate(email, password).should eq 1
 		end
 
+		it 'should return 0 when fails a password 3 times' do
+			email = @user.email
+			password = 'wrong_password'
+			User.should_receive(:find_by_email).with(email).and_return(@user)
+			User.authenticate(email, password)
+			User.should_receive(:find_by_email).with(email).and_return(@user)
+			User.authenticate(email, password)
+			User.should_receive(:find_by_email).with(email).and_return(@user)
+			User.authenticate(email, password).should eq 0
+		end
+
 		it 'should return nil when email do not match' do
 			email = 'wrong@email.com'
 			User.should_receive(:find_by_email).with(email).and_return(nil)
