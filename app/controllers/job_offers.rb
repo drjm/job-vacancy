@@ -114,6 +114,17 @@ JobVacancy::App.controllers :job_offers do
     end  
   end
 
+
+  put :deactivate, :with => :offer_id do
+    @job_offer = JobOffer.get(params[:offer_id])
+    @job_offer.deactivate
+    @job_offer.save
+    flash[:success] = 'Offer deactivate'
+    redirect '/job_offers/my'
+  end
+
+
+
   delete :destroy do
     @job_offer = JobOffer.get(params[:offer_id])
     if @job_offer.destroy
@@ -123,5 +134,6 @@ JobVacancy::App.controllers :job_offers do
     end
     redirect 'job_offers/my'
   end
+
 
 end
