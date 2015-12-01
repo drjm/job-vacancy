@@ -34,21 +34,21 @@ Pasos
 
    | KEY                       | VALUE                  |
    |---------------------------|:----------------------:|
-   | DATABASE_URL              | pegar direccion BD     |
-   | HEROKU_POSTGRESQL_PINK_URL| pegar direccion BD     |
+   | DATABASE_URL              | pegar dirección BD     |
+   | HEROKU_POSTGRESQL_PINK_URL| pegar dirección BD     |
    | LANG                      | en_US.UTF-8            |
    | RACK_ENV                  | production             |
 
 13. Una vez terminado de colocar las variables de configuración, click en **Deploy**, y click en **Heroku git**
-14. En la sección **Deploy using Heroku git**, click en **Heroku toolbelt**, se elige la plataforma y se siguien los pasos mencionados en la pagina.
-15. Terminada la instalación de Heroku Toolbelt, volver a la pagina de heroku, y volver a la seccion de integración con GitHub.
+14. En la sección **Deploy using Heroku git**, click en **Heroku toolbelt**, se elige la plataforma y se siguen los pasos mencionados en la pagina.
+15. Terminada la instalación de Heroku Toolbelt, volver a la pagina de Heroku, y volver a la seccion de integración con GitHub.
 16. Se loguean via consola a heroku (comando: **heroku login**).
 17. Colocan el comando **heroku apps** para ver los nombres de las applicaciones activas.
 18. Ejecutan el comando **heroku run rake db:migrate --app [nombreapp]**, para ejecutar la migración de la BD.
 19. Terminada la migración, revisar que no tenga errores.
 20. Volver a la pagina de heroku y seleccionar denuevo la aplicación de ser necesario.
 21. Ir a **Deploy -> GitHub**, e ir a la ultima opción de esa sección llamada *Manual deploy*, seleccionan un branch y click en **deploy**.
-22. Terminado el deploy, click en **View**, y podran ver la pagina y probarla, es recomendado guardarce la URL para futuros accesos.
+22. Terminado el deploy, click en **View**, y podran ver la pagina y probarla, es recomendado guardarse la URL para futuros accesos.
    * Cada cambio que hagan a github, no va a afectar a su deploy, hasta que lo hagan manualmente. Para que lo haga automaticamente hay que activar el autodeploy en la misma sección.
 
 ####**Tiempo Estimado**####
@@ -59,7 +59,7 @@ Pasos
 
 ¿Me aparece un mensaje que la **aplicación a tenido un problema, reintente mas tarde**?
 
-Este error se debe a una mala configuración de la integración de github, revisar si se selecciono bien el repositorio para hacer el deploy.
+Este error se debe a una mala configuración de la integración con github, revisar si se selecciono bien el repositorio para hacer el deploy.
 
 ¿Veo la pagina pero cuando me quiero loguear o ver las ofertas me aparece **Internal server error**?
 
