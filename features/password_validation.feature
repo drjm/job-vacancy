@@ -10,21 +10,21 @@ Feature: As a user i want the password have 8 characters at minimum, and possess
     When put "fer96y" on the password
     And put "fer96y" on the confirmation password
     And finish the registration
-    Then see the error on the registration page
+    Then see the error "the password must contain at least 8 characters" on the registration page
 
 
   Scenario: Put a password with 8 characters without letters
     When put "73496105" on the password
     And put "73496105" on the confirmation password
     And finish the registration
-    Then see the error on the registration page
+    Then see the error "the password must contain at least 1 letter" on the registration page
 
 
   Scenario: Put a password with 8 characters without numbers
     When put "fernando" on the password
     And put "fernando" on the confirmation password
     And finish the registration
-    Then see the error on the registration page
+    Then see the error "the password must contain at least 1 number" on the registration page
 
 
   Scenario: Put a password with 8 characters with numbers and letters

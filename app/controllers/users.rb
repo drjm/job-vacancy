@@ -32,24 +32,36 @@ JobVacancy::App.controllers :users do
       @str_validation = (params[:user][:password].to_s =~ /\D+/) != nil
       @size_validation = params[:user][:password].to_s.size >= 8
       
-      if(@int_validation && @str_validation && @size_validation)
-        if (params[:user][:password] == password_confirmation)
-          @user = User.new(params[:user])
-          if @user.save
-            flash[:success] = 'User created'
-            redirect '/'
+      if(@size_validation)
+        if(@str_validation)
+          if(@int_validation)
+            if (params[:user][:password] == password_confirmation)
+              @user = User.new(params[:user])
+              if @user.save
+                flash[:success] = 'User created'
+                redirect '/'
+              else
+                flash.now[:error] = 'All fields are mandatory'
+                render 'users/new'
+              end
+            else
+              @user = User.new (params[:user])
+              flash.now[:error] = 'Passwords do not match'
+              render 'users/new'          
+            end
           else
-            flash.now[:error] = 'All fields are mandatory'
-            render 'users/new'
+            @user = User.new (params[:user])
+            flash.now[:error] = 'the password must contain at least 1 number'
+            render 'users/new' 
           end
         else
           @user = User.new (params[:user])
-          flash.now[:error] = 'Passwords do not match'
-          render 'users/new'          
-        end
+          flash.now[:error] = 'the password must contain at least 1 letter'
+          render 'users/new' 
+        end 
       else
         @user = User.new (params[:user])
-        flash.now[:error] = 'Invalid passwords'
+        flash.now[:error] = 'the password must contain at least 8 characters'
         render 'users/new'
       end
   end
